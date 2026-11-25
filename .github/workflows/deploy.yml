@@ -11,27 +11,23 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
+  # JOB 1: Build React Application
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -45,14 +41,30 @@ jobs:
       - name: Configure React Router Fallback
         run: cp dist/index.html dist/404.html
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Verify Build Output
+        run: ls -la dist
 
-      - name: Upload Build Files
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
+
+  # JOB 2: Deploy to GitHub Pages
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
