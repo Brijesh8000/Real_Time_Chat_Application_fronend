@@ -1,0 +1,408 @@
+
+/* =====================================
+   ROOM NOT FOUND PAGE
+===================================== */
+
+.room-not-found {
+  position: relative;
+  min-height: calc(100vh - 82px);
+  padding: 55px 0 65px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(216, 255, 112, 0.12),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(108, 77, 246, 0.08),
+      transparent 30%
+    ),
+    var(--bg-primary);
+}
+
+.room-not-found__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 530px;
+}
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+.room-not-found__content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+}
+
+/* =====================================
+   DECORATIVE ICON
+===================================== */
+
+.room-not-found__icon {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 88px;
+  height: 88px;
+  margin-bottom: 25px;
+
+  color: var(--color-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 26px;
+
+  box-shadow: var(--shadow-md);
+
+  font-size: 47px;
+  font-weight: 800;
+  transform: rotate(-5deg);
+}
+
+.room-not-found__question {
+  position: absolute;
+  top: -11px;
+  right: -12px;
+
+  display: grid;
+  place-items: center;
+
+  width: 35px;
+  height: 35px;
+
+  color: #202536;
+  background: var(--color-accent);
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+
+  font-size: 19px;
+  font-weight: 800;
+  transform: rotate(5deg);
+}
+
+/* =====================================
+   EYEBROW
+===================================== */
+
+.room-not-found__eyebrow {
+  margin-bottom: 17px;
+  padding: 8px 13px;
+
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+/* =====================================
+   HEADING AND DESCRIPTION
+===================================== */
+
+.room-not-found__content h1 {
+  margin-bottom: 18px;
+
+  color: var(--text-primary);
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2.5px;
+}
+
+.room-not-found__content h1 span {
+  color: var(--color-primary);
+}
+
+.room-not-found__description {
+  max-width: 420px;
+  margin-bottom: 25px;
+
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =====================================
+   ROOM ID DISPLAY
+===================================== */
+
+.room-not-found__room-id {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+
+  width: min(100%, 360px);
+  margin-bottom: 25px;
+  padding: 15px 17px;
+
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+
+  text-align: left;
+}
+
+.room-not-found__room-id span {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.room-not-found__room-id strong {
+  max-width: 100%;
+
+  color: var(--text-primary);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   ACTION BUTTONS
+===================================== */
+
+.room-not-found__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  width: 100%;
+}
+
+.room-not-found__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 49px;
+  padding: 13px 18px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.room-not-found__button:hover {
+  transform: translateY(-2px);
+}
+
+.room-not-found__button--primary {
+  color: #ffffff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.room-not-found__button--primary:hover {
+  color: #ffffff;
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.room-not-found__button--secondary {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.room-not-found__button--secondary:hover {
+  color: var(--color-primary);
+  background: var(--bg-secondary);
+  border-color: var(--color-primary);
+}
+
+/* =====================================
+   FOOTER NOTE
+===================================== */
+
+.room-not-found__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 35px;
+
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.room-not-found__note span {
+  color: var(--color-primary);
+  font-size: 17px;
+}
+
+/* =====================================
+   BACKGROUND DECORATIONS
+===================================== */
+
+.room-not-found__decoration {
+  position: absolute;
+  z-index: 1;
+
+  display: grid;
+  place-items: center;
+
+  pointer-events: none;
+  user-select: none;
+
+  font-weight: 800;
+  line-height: 1;
+}
+
+.room-not-found__decoration--one {
+  top: 12%;
+  left: 9%;
+
+  width: 90px;
+  height: 90px;
+
+  color: var(--color-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 26px;
+
+  font-size: 46px;
+  opacity: 0.35;
+  transform: rotate(12deg);
+}
+
+.room-not-found__decoration--two {
+  right: 9%;
+  bottom: 14%;
+
+  width: 70px;
+  height: 70px;
+
+  color: #202536;
+  background: var(--color-accent);
+  border-radius: 50%;
+
+  font-size: 36px;
+  opacity: 0.8;
+  transform: rotate(-10deg);
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 900px) {
+  .room-not-found__decoration--one {
+    left: 3%;
+  }
+
+  .room-not-found__decoration--two {
+    right: 3%;
+  }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+  .room-not-found {
+    min-height: calc(100vh - 72px);
+    padding: 40px 0;
+  }
+
+  .room-not-found__container {
+    min-height: 480px;
+  }
+
+  .room-not-found__icon {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 22px;
+    font-size: 41px;
+  }
+
+  .room-not-found__content h1 {
+    font-size: clamp(37px, 10vw, 48px);
+    letter-spacing: -1.8px;
+  }
+
+  .room-not-found__description {
+    max-width: 340px;
+    font-size: 13px;
+  }
+
+  .room-not-found__actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 350px;
+  }
+
+  .room-not-found__button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .room-not-found__decoration--one {
+    top: 2%;
+    left: 0;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+    font-size: 25px;
+    opacity: 0.22;
+  }
+
+  .room-not-found__decoration--two {
+    right: 0;
+    bottom: 5%;
+
+    width: 45px;
+    height: 45px;
+    font-size: 23px;
+    opacity: 0.5;
+  }
+
+  .room-not-found__note {
+    margin-top: 27px;
+    font-size: 10px;
+  }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .room-not-found__button {
+    transition: none;
+  }
+}

@@ -1,0 +1,94 @@
+
+/* =====================================
+   CONNECTION STATUS
+===================================== */
+
+.connection-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  width: fit-content;
+  padding: 9px 12px;
+
+  color: var(--text-secondary);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+/* Status indicator dot */
+
+.connection-status__dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background-color: var(--text-muted);
+}
+
+/* Connected */
+
+.connection-status--connected .connection-status__dot {
+  background-color: var(--color-success);
+
+  box-shadow: 0 0 0 3px
+    rgba(22, 131, 95, 0.12);
+}
+
+.connection-status--connected {
+  color: var(--color-success);
+}
+
+/* Connecting */
+
+.connection-status--connecting .connection-status__dot {
+  background-color: var(--color-warning);
+
+  animation: connection-status-pulse 1.2s ease-in-out infinite;
+}
+
+/* Reconnecting */
+
+.connection-status--reconnecting .connection-status__dot {
+  background-color: var(--color-warning);
+
+  animation: connection-status-pulse 1.2s ease-in-out infinite;
+}
+
+/* Disconnected */
+
+.connection-status--disconnected .connection-status__dot {
+  background-color: var(--color-error);
+}
+
+.connection-status--disconnected {
+  color: var(--color-error);
+}
+
+/* Subtle pulse while connecting */
+
+@keyframes connection-status-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .connection-status__dot {
+    animation: none !important;
+  }
+}

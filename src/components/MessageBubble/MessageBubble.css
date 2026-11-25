@@ -1,0 +1,140 @@
+
+/* =====================================
+   MESSAGE ROW
+===================================== */
+
+.message-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* Own messages appear on the right */
+
+.message-bubble--own {
+  justify-content: flex-end;
+}
+
+/* =====================================
+   AVATAR
+===================================== */
+
+.message-bubble__avatar {
+  display: grid;
+  place-items: center;
+
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+
+  color: #ffffff;
+  background-color: #e98570;
+  border-radius: 11px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.message-bubble__avatar--own {
+  background-color: var(--color-primary);
+}
+
+/* =====================================
+   MESSAGE CONTENT
+===================================== */
+
+.message-bubble__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+
+  min-width: 0;
+  max-width: min(76%, 540px);
+}
+
+.message-bubble--own .message-bubble__content {
+  align-items: flex-end;
+}
+
+/* =====================================
+   SENDER NAME AND TIME
+===================================== */
+
+.message-bubble__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.message-bubble__meta strong {
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.message-bubble__meta time {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+/* =====================================
+   MESSAGE TEXT
+===================================== */
+
+.message-bubble__text {
+  max-width: 100%;
+  padding: 12px 15px;
+
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px 15px 15px 15px;
+
+  font-size: 13px;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Own message styling */
+
+.message-bubble--own .message-bubble__text {
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  border-radius: 15px 4px 15px 15px;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 420px) {
+  .message-bubble {
+    gap: 8px;
+  }
+
+  .message-bubble__avatar {
+    width: 31px;
+    height: 31px;
+    border-radius: 9px;
+  }
+
+  .message-bubble__content {
+    max-width: 78%;
+  }
+
+  .message-bubble__text {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

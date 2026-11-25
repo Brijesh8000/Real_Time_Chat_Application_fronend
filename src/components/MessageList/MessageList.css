@@ -1,0 +1,135 @@
+
+/* =====================================
+   MESSAGE LIST
+===================================== */
+
+.message-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 22px;
+
+  min-height: 0;
+  padding: 25px 23px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   LOADING STATE
+===================================== */
+
+.message-list__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  flex: 1;
+  min-height: 180px;
+
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.message-list__loading p {
+  font-size: 12px;
+}
+
+.message-list__spinner {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  border: 2px solid var(--border-color);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+
+  animation: message-list-spin 700ms linear infinite;
+}
+
+@keyframes message-list-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.message-list__empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 220px;
+  padding: 25px 12px;
+  margin: auto 0;
+
+  text-align: center;
+}
+
+.message-list__empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+  margin-bottom: 17px;
+
+  color: var(--color-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 19px;
+
+  font-size: 29px;
+}
+
+.message-list__empty h3 {
+  margin-bottom: 8px;
+
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.message-list__empty p {
+  max-width: 280px;
+
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 760px) {
+  .message-list {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .message-list {
+    gap: 18px;
+    padding: 18px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-list {
+    scroll-behavior: auto;
+  }
+
+  .message-list__spinner {
+    animation: none;
+  }
+}

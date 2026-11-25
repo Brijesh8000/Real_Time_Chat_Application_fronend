@@ -1,0 +1,163 @@
+
+/* =====================================
+   FORM INPUT WRAPPER
+===================================== */
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+}
+
+/* =====================================
+   LABEL
+===================================== */
+
+.form-input__label {
+  display: block;
+
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.form-input__required {
+  margin-left: 4px;
+
+  color: var(--color-error);
+  font-weight: 800;
+}
+
+/* =====================================
+   INPUT FIELD
+===================================== */
+
+.form-input__field {
+  display: block;
+  width: 100%;
+  min-height: 49px;
+  padding: 12px 14px;
+
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+
+  outline: none;
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+/* Placeholder */
+
+.form-input__field::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+/* Focus */
+
+.form-input__field:focus {
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px
+    rgba(108, 77, 246, 0.13);
+}
+
+/* Error state */
+
+.form-input__field--error {
+  border-color: var(--color-error);
+}
+
+.form-input__field--error:focus {
+  border-color: var(--color-error);
+
+  box-shadow: 0 0 0 3px
+    rgba(220, 69, 69, 0.12);
+}
+
+/* Disabled state */
+
+.form-input__field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--bg-secondary);
+}
+
+/* =====================================
+   HELPER TEXT
+===================================== */
+
+.form-input__hint {
+  margin: 0;
+
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   VALIDATION ERROR
+===================================== */
+
+.form-input__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+
+  margin: 0;
+
+  color: var(--color-error);
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.form-input__error span {
+  display: grid;
+  place-items: center;
+
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+
+  color: #ffffff;
+  background-color: var(--color-error);
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+  .form-input__field {
+    min-height: 47px;
+    font-size: 14px;
+  }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-input__field {
+    transition: none;
+  }
+}

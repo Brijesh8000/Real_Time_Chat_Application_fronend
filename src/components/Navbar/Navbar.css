@@ -1,0 +1,303 @@
+
+/* ====================================
+   NAVBAR
+==================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.navbar__inner {
+  position: relative;
+
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ====================================
+   BRAND LOGO
+==================================== */
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+
+  flex-shrink: 0;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navbar__brand:hover {
+  color: var(--text-primary);
+}
+
+.navbar__logo-mark {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__logo-mark span {
+  color: var(--color-accent);
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.navbar__brand-text strong {
+  color: var(--text-primary);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+}
+
+.navbar__brand-text small {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* ====================================
+   NAVIGATION LINKS
+==================================== */
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-left: auto;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  text-decoration: none;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.navbar__link:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+.navbar__link--active {
+  color: var(--color-primary);
+  background-color: var(--bg-secondary);
+}
+
+.navbar__link--active:hover {
+  color: var(--color-primary);
+}
+
+/* Join Room Call-to-Action */
+
+.navbar__join-link {
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.navbar__join-link:hover,
+.navbar__join-link.navbar__link--active {
+  color: #ffffff;
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.navbar__join-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+
+.navbar__join-link:hover .navbar__join-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ====================================
+   RIGHT-SIDE ACTIONS
+==================================== */
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar__theme-toggle,
+.navbar__menu-toggle {
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  font-size: 23px;
+  line-height: 1;
+
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.navbar__theme-toggle:hover,
+.navbar__menu-toggle:hover {
+  background-color: var(--bg-secondary);
+  transform: translateY(-1px);
+}
+
+.navbar__theme-toggle:active,
+.navbar__menu-toggle:active {
+  transform: scale(0.96);
+}
+
+/* Hidden on desktop */
+
+.navbar__menu-toggle {
+  display: none;
+}
+
+/* ====================================
+   MOBILE RESPONSIVENESS
+==================================== */
+
+@media (max-width: 760px) {
+  .navbar__inner {
+    min-height: 72px;
+    gap: 12px;
+  }
+
+  .navbar__logo-mark {
+    width: 40px;
+    height: 40px;
+    font-size: 27px;
+  }
+
+  .navbar__brand-text strong {
+    font-size: 19px;
+  }
+
+  .navbar__brand-text small {
+    font-size: 8px;
+  }
+
+  .navbar__menu {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -14px;
+    right: -14px;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    padding: 16px 14px 20px;
+
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+  }
+
+  .navbar__menu--open {
+    display: flex;
+  }
+
+  .navbar__link {
+    width: 100%;
+    justify-content: space-between;
+    padding: 13px 15px;
+  }
+
+  .navbar__actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .navbar__theme-toggle,
+  .navbar__menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar__menu-toggle {
+    display: inline-flex;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar__brand {
+    gap: 8px;
+  }
+
+  .navbar__brand-text strong {
+    font-size: 17px;
+  }
+
+  .navbar__logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar__theme-toggle,
+  .navbar__menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}
