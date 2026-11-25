@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 
-  // Replace with your actual GitHub repository name
-  base: '/Real_Time_Chat_Application/',
+  base: '/Real_Time_Chat_Application_fronend/',
 
   server: {
     proxy: {
