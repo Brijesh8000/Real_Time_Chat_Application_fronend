@@ -1,37 +1,39 @@
 
 // src/services/roomService.js
 
+
+const IS_PRODUCTION = import.meta.env.PROD;
+
 const ROOM_API_BASE = (
-  import.meta.env.VITE_ROOM_API_BASE || "/api/v1/rooms"
+  import.meta.env.VITE_ROOM_API_BASE ||
+  (IS_PRODUCTION ? "" : "/api/v1/rooms")
 ).trim().replace(/\/+$/, "");
 
 // Check API configuration
 function getApiBase() {
   if (!ROOM_API_BASE) {
     throw new Error(
-      "Room API URL is not configured. Please check your .env file."
+      "Production API URL is missing. Configure VITE_ROOM_API_BASE."
     );
   }
 
-  return ROOM_API_BASE;
-}
+  const url = new URL(ROOM_API_BASE, window.location.origin);
 
-// Build URLs supporting both relative and absolute API bases
-function buildApiUrl(path = "", params = {}) {
-  const url = new URL(getApiBase(), window.location.origin);
-
-  if (path) {
-    url.pathname = `${url.pathname.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
+  if (IS_PRODUCTION && url.origin === window.location.origin) {
+    throw new Error(
+      "Production API must use an absolute HTTPS backend URL."
+    );
   }
 
-  Object.entries(params).forEach(([key, value]) => {
-    if (value !== undefined && value !== null) {
-      url.searchParams.set(key, value);
-    }
-  });
+  if (IS_PRODUCTION && url.protocol !== "https:") {
+    throw new Error(
+      "Production API must use HTTPS."
+    );
+  }
 
-  return url.toString();
+  return url.toString().replace(/\/+$/, "");
 }
+
 
 // Handle HTTP requests and backend responses
 async function apiRequest(url, options = {}) {
