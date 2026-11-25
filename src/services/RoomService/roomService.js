@@ -1,7 +1,6 @@
 
 // src/services/roomService.js
 
-
 const IS_PRODUCTION = import.meta.env.PROD;
 
 const ROOM_API_BASE = (
@@ -9,7 +8,7 @@ const ROOM_API_BASE = (
   (IS_PRODUCTION ? "" : "/api/v1/rooms")
 ).trim().replace(/\/+$/, "");
 
-// Check API configuration
+// 1. Validate API configuration
 function getApiBase() {
   if (!ROOM_API_BASE) {
     throw new Error(
@@ -21,7 +20,7 @@ function getApiBase() {
 
   if (IS_PRODUCTION && url.origin === window.location.origin) {
     throw new Error(
-      "Production API must use an absolute HTTPS backend URL."
+      "Production API must use an absolute backend URL."
     );
   }
 
@@ -34,8 +33,24 @@ function getApiBase() {
   return url.toString().replace(/\/+$/, "");
 }
 
+// 2. Build API URLs
+function buildApiUrl(path = "", params = {}) {
+  const url = new URL(getApiBase(), window.location.origin);
 
-// Handle HTTP requests and backend responses
+  if (path) {
+    url.pathname = `${url.pathname.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
+  }
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      url.searchParams.set(key, value);
+    }
+  });
+
+  return url.toString();
+}
+
+// 3. Handle API requests and backend responses
 async function apiRequest(url, options = {}) {
   const { headers: customHeaders, ...restOptions } = options;
 
@@ -51,7 +66,7 @@ async function apiRequest(url, options = {}) {
     });
   } catch (error) {
     throw new Error(
-      `Unable to connect to backend. Please check your API URL and Vite proxy configuration. Details: ${error.message}`
+      `Unable to connect to backend. Check your API URL and backend availability. Details: ${error.message}`
     );
   }
 
@@ -84,7 +99,7 @@ async function apiRequest(url, options = {}) {
   return data;
 }
 
-// 1. Create a new room
+// 4. Create a new room
 // POST /api/v1/rooms?roomName=...
 export async function createRoom(roomName) {
   const name = roomName?.trim();
@@ -102,7 +117,7 @@ export async function createRoom(roomName) {
   });
 }
 
-// 2. Get a room by its name
+// 5. Get a room by its name
 // GET /api/v1/rooms/{roomName}
 export async function getRoom(roomName) {
   const name = roomName?.trim();
@@ -118,7 +133,7 @@ export async function getRoom(roomName) {
   });
 }
 
-// 3. Get previous messages from a room
+// 6. Get previous messages from a room
 // GET /api/v1/rooms/{roomName}/messages
 export async function getRoomMessages(roomName) {
   const name = roomName?.trim();
